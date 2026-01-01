@@ -1,3 +1,6 @@
+// Set DEBUG before anything else
+process.env.DEBUG = process.env.DEBUG || 'development:*';
+
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const app = express();

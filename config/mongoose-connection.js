@@ -1,10 +1,21 @@
-const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
-mongoose.connect("mongodb://localhost:27017/Premium-bag-shop")
+// Set DEBUG before requiring debug module
+if (!process.env.DEBUG) {
+    process.env.DEBUG = 'development:*';
+}
+
+const mongoose = require('mongoose');
+const debugLogger = require('debug')("development:mongoose-connection");
+
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/premium-bag-shop';
+
+mongoose.connect(mongoURI)
 .then(() => {
-    console.log("Connected to MongoDB successfully");
+    debugLogger("Connected to MongoDB successfully");
 }).catch((err) => {
-    console.error("Error connecting to MongoDB:", err);
+    debugLogger("Error connecting to MongoDB:", err.message);
 });
 
 module.exports = mongoose.connection;
