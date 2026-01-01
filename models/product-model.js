@@ -1,6 +1,4 @@
-const { text } = require('express');
 const mongoose = require('mongoose');
-
 
 const productSchema = mongoose.Schema({
     image: String,

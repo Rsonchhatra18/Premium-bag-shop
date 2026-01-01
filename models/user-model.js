@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost:27017/Premium-bag-shop");
-
 const userSchema = mongoose.Schema({
     fullname: String,   
     email: String,
